@@ -15,7 +15,7 @@
 import csv
 
 # Create variables
-financial_file_path = "python-challenge/PyBank/Resources/budget_data.csv"
+financial_file_path = "PyBank/Resources/budget_data.csv"
 total_months = 0
 net_total_profit_losses = 0
 monthly_changes = []
@@ -50,25 +50,31 @@ greatest_decrease = min(monthly_changes)
 increase_month = months[monthly_changes.index(greatest_increase)]
 decrease_month = months[monthly_changes.index(greatest_decrease)]
 
+# Format results
+formatted_total = "${:,.0f}".format(net_total_profit_losses)
+formatted_average_change = "${:,.2f}".format(average_change)
+formatted_increase = "${:,.0f}".format(greatest_increase)
+formatted_decrease = "${:,.0f}".format(greatest_decrease)
+
 # Print results to screen
 print("Financial Analysis")
-print("-------------------------")
+print("----------------------------")
 print(f"Total Months: {total_months}")
-print(f"Total: ${net_total_profit_losses}")
-print(f"Average Change: ${average_change:.2f}")
-print(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})")
-print(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})")
+print(f"Total: {formatted_total}")
+print(f"Average Change: {formatted_average_change}")
+print(f"Greatest Increase in Profits: {increase_month} ({formatted_increase})")
+print(f"Greatest Decrease in Profits: {decrease_month} ({formatted_decrease})")
 
 # Print results to file
 out_file_path = "Financial_Analysis.txt"
 with open(out_file_path, 'w') as file_out:
     file_out.write("Financial Analysis\n")
-    file_out.write("-------------------------\n")
+    file_out.write("----------------------------\n")
     file_out.write(f"Total Months: {total_months}\n")
-    file_out.write(f"Total: ${net_total_profit_losses}\n")
-    file_out.write(f"Average Change: ${average_change:.2f}\n")
-    file_out.write(f"Greatest Increase in Profits: {increase_month} (${greatest_increase})\n")
-    file_out.write(f"Greatest Decrease in Profits: {decrease_month} (${greatest_decrease})\n")
+    file_out.write(f"Total: {formatted_total}\n")
+    file_out.write(f"Average Change: {formatted_average_change}\n")
+    file_out.write(f"Greatest Increase in Profits: {increase_month} ({formatted_increase})\n")
+    file_out.write(f"Greatest Decrease in Profits: {decrease_month} ({formatted_decrease})\n")
 
 
 
